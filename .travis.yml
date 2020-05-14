@@ -87,8 +87,8 @@ env:
     - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=no
     - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=yes
 
-matrix:
-  fast_finish: true
+#matrix:
+#  fast_finish: true
 
 addons:
   coverity_scan:
