@@ -10,8 +10,8 @@ language: c
 arch:
   - amd64
   - ppc64le
-  - s390x
-  - arm64
+#  - s390x
+#  - arm64
 
 os:
   - linux
@@ -21,7 +21,7 @@ dist: bionic
 
 compiler:
   - gcc
-  - clang
+#  - clang
 
 #
 # Linux runs on all of the architectures listed above; macOS currently
@@ -48,12 +48,13 @@ jobs:
     os: osx
   - compiler: gcc
     os: osx
-  - arch: ppc64le
-    if: branch == coverity_scan
-  - arch: s390x
-    if: branch == coverity_scan
-  - arch: arm64
-    if: branch == coverity_scan
+  - if: branch == coverity_scan
+    arch: ppc64le
+#  - if: branch == coverity_scan
+#    arch: s390x
+#  - if: branch == coverity_scan
+#    arch: arm64
+    
 
 cache: ccache
 
