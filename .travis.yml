@@ -9,18 +9,18 @@ language: c
 #
 arch:
   - amd64
-  - ppc64le
-  - s390x
-  - arm64
+  # - ppc64le
+  # - s390x
+  # - arm64
 
 os:
-  - linux
+  # - linux
   - osx
 
 dist: bionic
 
 compiler:
-  - gcc
+  # - gcc
   - clang
 
 #
@@ -49,6 +49,7 @@ cache: ccache
 
 env:
   global:
+    - "PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'"
     # encrypted COVERITY_SCAN_TOKEN from
     # https://scan.coverity.com/projects/<project_id>/submit_build?tab=travis_ci
     - secure: "DwUeukcRGl1vXNZDDt2237zCA58ZzmzWpCkPcb/Hpeh8OvRw1eBZJiu4L8iD2qtY4A/dPDvOeBiml5MF6bVri9Dui1yPkvkvFqIXzbK5CWS6Ye+NgSBNMwqnAjhTMv/x8I4Bvy9IhDGwj/2JXVUvjBddRMLRyr/ag+MDRB1IVAI="
@@ -63,21 +64,18 @@ env:
     # NOTE: REMOTE= is for the libpcap build, which is done with autotools
     # even if we're building tcpdump with CMake.
     # It's irrelevant if we're building tcpdump with the system libpcap.
-    - BUILD_LIBPCAP=no  CMAKE=no                 CRYPTO=no
-    - BUILD_LIBPCAP=no  CMAKE=no                 CRYPTO=yes
+    # - BUILD_LIBPCAP=no  CMAKE=no                 CRYPTO=no
+    # - BUILD_LIBPCAP=no  CMAKE=no                 CRYPTO=yes
     - BUILD_LIBPCAP=no  CMAKE=yes                CRYPTO=no
-    - BUILD_LIBPCAP=no  CMAKE=yes                CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=yes
-
-matrix:
-  fast_finish: true
+    # - BUILD_LIBPCAP=no  CMAKE=yes                CRYPTO=yes
+    # - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=no
+    # - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=yes
+    # - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=no
+    # - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=yes
+    # - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=no
+    # - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=yes
+    # - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=no
+    # - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=yes
 
 addons:
   coverity_scan:
